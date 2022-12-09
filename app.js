@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	    });
 
         Quagga.onDetected((data) => {
-	    	$resultados.textContent = data.codeResult.code;
+	    	resultadoEl.textContent = data.codeResult.code;
 	    	console.log(data);
 	    });
     } else {
