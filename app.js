@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	    		target: document.getElementById("contenedor"),
 	    	},
 	    	decoder: {
-	    		readers: ["code_128_reader", "ean_reader", "codabar_reader", "i2of5_reader", "code_93_reader"]
+	    		readers: ["ean_reader", "code_128_reader"]
 	    	}
 	    }, function (err) {
 	    	if (err) {
