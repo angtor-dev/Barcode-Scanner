@@ -2,12 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // safely access `navigator.mediaDevices.getUserMedia`
     if (navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function') {
         const resultadoEl = document.getElementById("resultado")
+        const formatoEl = document.getElementById("formato")
 
         Quagga.init({
 	    	inputStream: {
 	    		constraints: {
-	    			width: 1920,
-	    			height: 1080,
+	    			width: 1280,
+	    			height: 720,
 	    		},
 	    		name: "Live",
 	    		type: "LiveStream",
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         Quagga.onDetected((data) => {
 	    	resultadoEl.textContent = data.codeResult.code;
+	    	formatoEl.textContent = data.codeResult.format;
 	    	console.log(data);
 	    });
     } else {
