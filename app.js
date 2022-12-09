@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+    iniciarEscaner()
+})
+
+function iniciarEscaner() {
     // safely access `navigator.mediaDevices.getUserMedia`
     if (navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function') {
         const resultadoEl = document.getElementById("resultado")
@@ -58,4 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         alert("No se puede acceder a los datos de la camara")
     }
-})
+    document.getElementById("iniciar").disabled = true
+    document.getElementById("detener").disabled = false
+}
+
+function detenerEscaner() {
+    Quagga.stop()
+    document.getElementById("detener").disabled = true
+    document.getElementById("iniciar").disabled = false
+}
