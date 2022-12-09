@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	    		target: document.getElementById("contenedor"),
 	    	},
 	    	decoder: {
-	    		readers: ["ean_reader", "code_128_reader"]
+	    		readers: ["ean_reader", "code_128_reader", "upc_reader"]
 	    	}
 	    }, function (err) {
 	    	if (err) {
