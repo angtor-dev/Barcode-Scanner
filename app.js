@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Quagga.init({
 	    	inputStream: {
 	    		constraints: {
-	    			width: 1280,
+	    			width: 720,
 	    			height: 720,
 	    		},
 	    		name: "Live",
