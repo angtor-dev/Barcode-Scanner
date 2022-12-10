@@ -1,9 +1,12 @@
+const resultadoEl = document.getElementById("resultado")
+const formatoEl = document.getElementById("formato")
+const resolucionEl = document.getElementById("resolucion")
+
 var escanerActivo = false
 
 document.addEventListener("DOMContentLoaded", () => {
     iniciarEscaner()
 
-    const resolucionEl = document.getElementById("resolucion")
     resolucionEl.addEventListener("change", () => {
         if (escanerActivo) {
             detenerEscaner()
@@ -15,10 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function iniciarEscaner() {
     // safely access `navigator.mediaDevices.getUserMedia`
     if (navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function') {
-        const resultadoEl = document.getElementById("resultado")
-        const formatoEl = document.getElementById("formato")
-
-        let resolucion = document.getElementById("resolucion").value
+        let resolucion = resolucionEl.value
 
         Quagga.init({
 	    	inputStream: {
@@ -84,4 +84,9 @@ function detenerEscaner() {
     escanerActivo = false
     document.getElementById("detener").disabled = true
     document.getElementById("iniciar").disabled = false
+}
+
+function limpiarResultados() {
+    resultadoEl.textContent = "Aquí aparecerá el código"
+    formatoEl.textContent = "Formato del codigo de barras"
 }
