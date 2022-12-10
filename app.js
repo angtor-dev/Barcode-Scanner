@@ -8,11 +8,13 @@ function iniciarEscaner() {
         const resultadoEl = document.getElementById("resultado")
         const formatoEl = document.getElementById("formato")
 
+        let resolucion = document.getElementById("resolucion").value
+
         Quagga.init({
 	    	inputStream: {
 	    		constraints: {
-	    			width: 720,
-	    			height: 720,
+	    			width: resolucion,
+	    			height: resolucion,
 	    		},
 	    		name: "Live",
 	    		type: "LiveStream",
