@@ -1,5 +1,15 @@
+var escanerActivo = false
+
 document.addEventListener("DOMContentLoaded", () => {
     iniciarEscaner()
+
+    const resolucionEl = document.getElementById("resolucion")
+    resolucionEl.addEventListener("change", () => {
+        if (escanerActivo) {
+            detenerEscaner()
+            iniciarEscaner()
+        }
+    })
 })
 
 function iniciarEscaner() {
@@ -64,12 +74,14 @@ function iniciarEscaner() {
     } else {
         alert("No se puede acceder a los datos de la camara")
     }
+    escanerActivo = true
     document.getElementById("iniciar").disabled = true
     document.getElementById("detener").disabled = false
 }
 
 function detenerEscaner() {
     Quagga.stop()
+    escanerActivo = false
     document.getElementById("detener").disabled = true
     document.getElementById("iniciar").disabled = false
 }
