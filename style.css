@@ -21,3 +21,10 @@ canvas.drawingBuffer {
 	left: 50%;
 	transform: translateX(-50%) scale(2);
 }
+
+#flash {
+	position: absolute;
+	bottom: 50px;
+	left: 18%;
+	transform: translateX(-50%) scale(1.5);
+}

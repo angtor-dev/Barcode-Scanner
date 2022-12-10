@@ -40,6 +40,19 @@ function iniciarEscaner() {
 	    	}
 	    	console.log("Iniciado correctamente");
 	    	Quagga.start();
+
+            // Obtiene las capacidades de la camara
+            track = Quagga.CameraAccess.getActiveTrack();
+            var capabilities = {};
+
+            if (typeof track.getCapabilities === 'function') {
+                capabilities = track.getCapabilities();
+
+                // Flash
+                if (!capabilities.torch) {
+                    document.getElementById("flash").disabled = true
+                }
+            }
 	    });
 
         Quagga.onDetected((data) => {
@@ -89,4 +102,11 @@ function detenerEscaner() {
 function limpiarResultados() {
     resultadoEl.textContent = "Aquí aparecerá el código"
     formatoEl.textContent = "Formato del codigo de barras"
+}
+
+function toggleFlash() {
+    track.applyConstraints({
+        advanced: [{ torch: !track.getSettings().torch }]
+    })
+    .catch(e => console.log(e));
 }
