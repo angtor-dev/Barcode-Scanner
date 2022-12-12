@@ -1,0 +1,30 @@
+#contenedor video {
+	max-width: 100%;
+	width: 100%;
+}
+#contenedor {
+	max-width: 100%;
+	position:relative;
+}
+canvas {
+	max-width: 100%;
+}
+canvas.drawingBuffer {
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+#limpiar {
+	position: absolute;
+	bottom: 50px;
+	left: 50%;
+	transform: translateX(-50%) scale(2);
+}
+
+#flash {
+	position: absolute;
+	bottom: 50px;
+	left: 18%;
+	transform: translateX(-50%) scale(1.5);
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quagga.js Barcode Reader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p>Resultado: <b id="resultado">Aquí aparecerá el código</b></p>
+    <p>Formato: <b id="formato">Formato del codigo de barras</b></p>
+    <div class="controles">
+        <button onclick="iniciarEscaner()" id="iniciar">Iniciar</button>
+        <button onclick="detenerEscaner()" id="detener">Detener</button>
+        <select name="resolucion" id="resolucion">
+            <option value="360">360px</option>
+            <option value="480">480px</option>
+            <option value="720">720px</option>
+            <option value="1080">1080px</option>
+        </select>
+        <button onclick="limpiarResultados()" id="limpiar">Limpiar</button>
+        <button onclick="toggleFlash()" id="flash">flash</button>
+    </div><br>
+    <div id="contenedor"></div>
+    <div>
+        <label>
+            <input type="checkbox" name="formatos[]" value="code_128_reader" checked> Code 128 <br>
+        </label>
+        <label>
+            <input type="checkbox" name="formatos[]" value="ean_reader" checked> EAN 13 <br>
+        </label>
+        <label>
+            <input type="checkbox" name="formatos[]" value="ean_8_reader"> EAN 8 <br>
+        </label>
+        <label>
+            <input type="checkbox" name="formatos[]" value="code_39_reader"> Code 39 <br>
+        </label>
+        <label>
+            <input type="checkbox" name="formatos[]" value="codabar_reader"> Codabar <br>
+        </label>
+        <label>
+            <input type="checkbox" name="formatos[]" value="upc_reader" checked> UPC <br>
+        </label>
+        <label>
+            <input type="checkbox" name="formatos[]" value="upc_e_reader"> UPC-E <br>
+        </label>
+    </div>
+
+    <script src="https://unpkg.com/quagga@0.12.1/dist/quagga.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
