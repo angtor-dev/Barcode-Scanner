@@ -117,7 +117,7 @@ function getFormatos() {
     let formatos = []
 
     formatosEl.forEach(checkbox => {
-        formatos.push(checkbox.val)
+        formatos.push(checkbox.value)
     });
 
     return formatos
