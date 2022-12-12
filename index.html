@@ -23,6 +23,29 @@
         <button onclick="toggleFlash()" id="flash">flash</button>
     </div><br>
     <div id="contenedor"></div>
+    <div>
+        <label>
+            <input type="checkbox" name="formatos[]" value="code_128_reader" checked> Code 128 <br>
+        </label>
+        <label>
+            <input type="checkbox" name="formatos[]" value="ean_reader" checked> EAN 13 <br>
+        </label>
+        <label>
+            <input type="checkbox" name="formatos[]" value="ean_8_reader"> EAN 8 <br>
+        </label>
+        <label>
+            <input type="checkbox" name="formatos[]" value="code_39_reader"> Code 39 <br>
+        </label>
+        <label>
+            <input type="checkbox" name="formatos[]" value="codabar_reader"> Codabar <br>
+        </label>
+        <label>
+            <input type="checkbox" name="formatos[]" value="upc_reader" checked> UPC <br>
+        </label>
+        <label>
+            <input type="checkbox" name="formatos[]" value="upc_e_reader"> UPC-E <br>
+        </label>
+    </div>
 
     <script src="https://unpkg.com/quagga@0.12.1/dist/quagga.min.js"></script>
     <script src="app.js"></script>

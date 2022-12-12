@@ -19,6 +19,7 @@ function iniciarEscaner() {
     // safely access `navigator.mediaDevices.getUserMedia`
     if (navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function') {
         let resolucion = resolucionEl.value
+        let formatos = getFormatos()
 
         Quagga.init({
 	    	inputStream: {
@@ -31,7 +32,7 @@ function iniciarEscaner() {
 	    		target: document.getElementById("contenedor"),
 	    	},
 	    	decoder: {
-	    		readers: ["ean_reader", "code_128_reader", "upc_reader"]
+	    		readers: formatos
 	    	}
 	    }, function (err) {
 	    	if (err) {
@@ -109,4 +110,15 @@ function toggleFlash() {
         advanced: [{ torch: !track.getSettings().torch }]
     })
     .catch(e => console.log(e));
+}
+
+function getFormatos() {
+    const formatosEl = document.querySelectorAll("input[name='formatos[]']:checked")
+    let formatos = []
+
+    formatosEl.forEach(checkbox => {
+        formatos.push(checkbox.val)
+    });
+
+    return formatos
 }
