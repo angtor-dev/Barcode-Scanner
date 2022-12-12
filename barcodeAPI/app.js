@@ -40,15 +40,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const barcodeDetector = new BarcodeDetector()
     const video = document.querySelector('video')
 
-    setInterval(() => {
-        barcodeDetector
-        .detect(video)
-        .then((barcodes) => {
-            let pre = document.createElement("pre")
-            pre.innerHTML = JSON.stringify(barcodes, null, 2)
+    var barcodes = await barcodeDetector.detect(video);
+
+    alert("Codigo encontrado" + barcodes.rawValue)
+
+
+
+    // setInterval(() => {
+    //     barcodeDetector
+    //     .detect(video)
+    //     .then((barcodes) => {
+    //         let pre = document.createElement("pre")
+    //         pre.innerHTML = JSON.stringify(barcodes, null, 2)
     
-            video.after(pre)
-        })
-        .catch(console.error)
-    }, 100)
+    //         video.after(pre)
+    //     })
+    //     .catch(console.error)
+    // }, 100)
 })
