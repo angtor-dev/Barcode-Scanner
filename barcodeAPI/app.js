@@ -6,7 +6,9 @@ var decoding = false
 if (!("BarcodeDetector" in window)) {
     alert("Este navegador no es compatible con la API BarcodeDetector")
 } else {
-    barcodeDetector = new BarcodeDetector()
+    barcodeDetector = new BarcodeDetector({
+        formats: ['code_128', 'ean_13', 'ean_8', 'upc_a', 'upc_e', 'qr_code']
+    })
 
     // solicita permisos para usar camara y sus ajustes por defecto
     navigator.mediaDevices.getUserMedia({
@@ -57,9 +59,8 @@ async function decode() {
         let barcodes = await barcodeDetector.detect(videoEl)
         decoding = false
 
-        console.log(barcodes)
-
         if (barcodes.length != 0) {
+            console.log(barcodes)
             document.getElementById("codigo").textContent = barcodes[0].rawValue
             document.getElementById("formato").textContent = barcodes[0].format
         }
