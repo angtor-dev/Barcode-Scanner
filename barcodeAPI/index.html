@@ -10,6 +10,16 @@
 <body>
     <p>Codigo: <b id="codigo"></b></p>
     <p>Formato: <b id="formato"></b></p>
+
+    <div class="camara-controls">
+        <button onclick="stopCamara()">Detener Camara</button>
+    </div>
+
+    <div class="decode-controls">
+        <button onclick="startDecoding()" id="startDecode">Start</button>
+        <button onclick="stopDecoding()" id="stopDecode">Stop</button>
+    </div>
+
     <video autoplay id="camara"></video>
 
     <script src="app.js"></script>

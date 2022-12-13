@@ -1,7 +1,6 @@
 const videoEl = document.getElementById("camara")
-videoEl.addEventListener("loadeddata", onOpened)
+videoEl.addEventListener("loadeddata", startDecoding)
 
-var decodeInterval
 var decoding = false
 
 if (!("BarcodeDetector" in window)) {
@@ -19,6 +18,7 @@ if (!("BarcodeDetector" in window)) {
         }
     })
     .then((stream) => {
+        localStream = stream
         videoEl.srcObject = stream
 
         // get the active track of the stream
@@ -42,10 +42,11 @@ if (!("BarcodeDetector" in window)) {
     .catch(err => console.error('getUserMedia() failed: ', err))
 }
 
-function onOpened() {
-    console.log("Opened")
-    clearInterval(decodeInterval)
+function startDecoding() {
     decodeInterval = setInterval(decode, 500)
+
+    document.getElementById("startDecode").disabled = true
+    document.getElementById("stopDecode").disabled = false
 }
 
 async function decode() {
@@ -63,4 +64,26 @@ async function decode() {
 
         videoEl.after(pre)
     }
+}
+
+function stopCamera() {
+    try{
+        if (localStream){
+            localStream.getTracks().forEach(track => track.stop());
+        }
+    } catch (e){
+        alert(e.message);
+    }
+
+    stopDecoding()
+}
+
+function stopDecoding() {
+    if (decodeInterval !== undefined) {
+        clearInterval(decodeInterval)
+        console.log("Decoding stop")
+    }
+
+    document.getElementById("startDecode").disabled = false
+    document.getElementById("stopDecode").disabled = true
 }

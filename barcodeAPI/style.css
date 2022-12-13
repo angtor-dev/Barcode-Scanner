@@ -1,3 +1,16 @@
 video {
     max-width: min(97vh, 97vw);
 }
+
+.decode-controls {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    gap: 36px;
+    bottom: 20px;
+    justify-content: center;
+}
+
+.decode-controls > button {
+    transform: scale(1.5);
+}
