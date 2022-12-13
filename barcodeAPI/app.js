@@ -42,6 +42,7 @@ if (!("BarcodeDetector" in window)) {
     .catch(err => console.error('getUserMedia() failed: ', err))
 
     function onOpened() {
+        console.log("Opened")
         clearInterval(decodeInterval)
         decodeInterval = setInterval(decode, 500)
     }
