@@ -23,7 +23,7 @@ if (!("BarcodeDetector" in window)) {
 
         // get the active track of the stream
         const track = stream.getVideoTracks()[0]
-        // console.log(track.getSettings())
+        console.log(track.getSettings())
 
         // get current camera capabilities
         let capabilities = track.getCapabilities()
@@ -58,10 +58,10 @@ async function decode() {
         decoding = false
 
         console.log(barcodes)
-        console.log(barcodes.lenght)
-        console.log(barcodes[0].lenght)
+        console.log(barcodes.length)
+        console.log(barcodes[0].length)
 
-        if (barcodes.lenght != 0) {
+        if (barcodes.length != 0) {
             document.getElementById("codigo").textContent = barcodes[0].rawValue
             document.getElementById("formato").textContent = barcodes[0].format
         }
