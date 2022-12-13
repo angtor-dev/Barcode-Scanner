@@ -7,7 +7,7 @@ var decoding = false
 if (!("BarcodeDetector" in window)) {
     alert("Este navegador no es compatible con la API BarcodeDetector")
 } else {
-    const barcodeDetector = new BarcodeDetector()
+    barcodeDetector = new BarcodeDetector()
 
     // solicita permisos para usar camara y sus ajustes por defecto
     navigator.mediaDevices.getUserMedia({
