@@ -40,27 +40,27 @@ if (!("BarcodeDetector" in window)) {
         // }
     })
     .catch(err => console.error('getUserMedia() failed: ', err))
+}
 
-    function onOpened() {
-        console.log("Opened")
-        clearInterval(decodeInterval)
-        decodeInterval = setInterval(decode, 500)
-    }
+function onOpened() {
+    console.log("Opened")
+    clearInterval(decodeInterval)
+    decodeInterval = setInterval(decode, 500)
+}
 
-    async function decode() {
-        if (decoding === false) {
-            console.log("Decoding...")
+async function decode() {
+    if (decoding === false) {
+        console.log("Decoding...")
 
-            decoding = true
-            let barcodes = await barcodeDetector.detect(videoEl)
-            decoding = false
+        decoding = true
+        let barcodes = await barcodeDetector.detect(videoEl)
+        decoding = false
 
-            document.getElementById("codigo").textContent(barcodes.rawValue)
+        document.getElementById("codigo").textContent(barcodes.rawValue)
 
-            let pre = document.createElement("pre")
-            pre.innerHTML = JSON.stringify(barcodes, null, 2)
+        let pre = document.createElement("pre")
+        pre.innerHTML = JSON.stringify(barcodes, null, 2)
 
-            videoEl.after(pre)
-        }
+        videoEl.after(pre)
     }
 }
