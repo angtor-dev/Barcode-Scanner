@@ -56,7 +56,7 @@ async function decode() {
         let barcodes = await barcodeDetector.detect(videoEl)
         decoding = false
 
-        document.getElementById("codigo").textContent(barcodes.rawValue)
+        document.getElementById("codigo").textContent = barcodes.rawValue
 
         let pre = document.createElement("pre")
         pre.innerHTML = JSON.stringify(barcodes, null, 2)
