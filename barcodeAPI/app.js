@@ -60,18 +60,16 @@ async function decode() {
         console.log(barcodes)
         console.log(barcodes.rawValue)
 
-        document.getElementById("codigo").textContent = barcodes.rawValue
-
-        // let pre = document.createElement("pre")
-        // pre.innerHTML = JSON.stringify(barcodes, null, 2)
-
-        // videoEl.after(pre)
+        if (barcodes.lenght > 0) {
+            document.getElementById("codigo").textContent = barcodes[0].rawValue
+            document.getElementById("formato").textContent = barcodes[0].format
+        }
     }
 }
 
 function stopCamera() {
     try{
-        if (localStream){
+        if (localStream) {
             localStream.getTracks().forEach(track => track.stop());
         }
     } catch (e){
