@@ -58,9 +58,9 @@ async function decode() {
         decoding = false
 
         console.log(barcodes)
-        console.log(barcodes[0].rawValue)
 
         if (barcodes.lenght != 0) {
+            console.log(barcodes[0].rawValue)
             document.getElementById("codigo").textContent = barcodes[0].rawValue
             document.getElementById("formato").textContent = barcodes[0].format
         }
