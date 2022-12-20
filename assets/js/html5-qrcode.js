@@ -16,7 +16,6 @@ let scanConfig = {
     fps: 10,
     aspectRatio: 1,
     qrbox: { width: 250, height: 250 },
-    supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
     showTorchButtonIfSupported: true
 }
 
