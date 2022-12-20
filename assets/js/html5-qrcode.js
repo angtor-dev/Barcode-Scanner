@@ -1,20 +1,22 @@
+var lastDecodedText = ""
+
 function onScanSuccess(decodedText, decodedResult) {
     console.log(`Code matched = ${decodedText}`, decodedResult);
 
-    let resultsList = document.getElementById('decodedResults')
+    if (decodedText != lastDecodedText) {
+        lastDecodedText = decodedText
 
-    let li = document.createElement('li')
-    li.textContent = "Codigo: " + decodedText + " Formato: " + decodedResult.result.format.formatName
-    resultsList.append(li)
+        let resultsList = document.getElementById('decodedResults')
+
+        let li = document.createElement('li')
+        li.textContent = "Codigo: " + decodedText + " Formato: " + decodedResult.result.format.formatName
+        resultsList.append(li)
+    }
 }
 
 function onScanFailure(error) {
-    if (error == "QR code parse error, error = TypeError: Cannot read properties of undefined (reading 'formatName')") {
-        return
-    }
-    
-    console.warn(`Code scan error = ${error}`);
-  }
+
+}
 
 let scanConfig = {
     fps: 10,
