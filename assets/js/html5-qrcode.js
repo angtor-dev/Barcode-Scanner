@@ -3,19 +3,19 @@ var lastDecodedText = ""
 function onScanSuccess(decodedText, decodedResult) {
     console.log(`Code matched = ${decodedText}`, decodedResult);
 
-    if (decodedText != lastDecodedText) {
-        lastDecodedText = decodedText
+    if (decodedText == lastDecodedText) return
+    
+    lastDecodedText = decodedText
 
-        let resultsList = document.getElementById('decodedResults')
+    let resultsList = document.getElementById('decodedResults')
 
-        let li = document.createElement('li')
-        li.textContent = "Codigo: " + decodedText + " Formato: " + decodedResult.result.format.formatName
-        resultsList.append(li)
-    }
+    let li = document.createElement('li')
+    li.textContent = "Codigo: " + decodedText + " Formato: " + decodedResult.result.format.formatName
+    resultsList.append(li)
 }
 
 function onScanFailure(error) {
-
+    return
 }
 
 let scanConfig = {

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\assets\css\html5-qrcode.css">
+    
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <title>Html5Qrcode Test</title>
+</head>
+<body>
+    <div id="reader"></div>
+
+    <div class="scan-controls">
+        <button id="iniciarEscaner" onclick="startScanner()">Iniciar Escaner</button>
+        <button id="detenerEscaner" onclick="stopScanner()">Detener Escaner</button>
+    </div>
+
+    <table id="table-results">
+        <tr>
+            <th>Formato</th>
+            <th>codigo</th>
+        </tr>
+    </table>
+    
+    <script src="..\assets\js\html5-qrcode-custom.js"></script>
+</body>
+</html>
