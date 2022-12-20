@@ -8,6 +8,10 @@ function onScanSuccess(decodedText, decodedResult) {
     resultsList.append(li)
 }
 
+function onScanFailure(error) {
+    console.warn(`Code scan error = ${error}`);
+  }
+
 let scanConfig = {
     fps: 10,
     aspectRatio: 1,
@@ -18,4 +22,4 @@ let scanConfig = {
 
 let html5QrcodeScanner = new Html5QrcodeScanner("reader", scanConfig, false);
 
-html5QrcodeScanner.render(onScanSuccess);
+html5QrcodeScanner.render(onScanSuccess, onScanFailure);
