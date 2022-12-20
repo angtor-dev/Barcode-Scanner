@@ -4,11 +4,15 @@ function onScanSuccess(decodedText, decodedResult) {
     let resultsList = document.getElementById('decodedResults')
 
     let li = document.createElement('li')
-    li.textContent = "Codigo: " + decodedText + " Formato: " + decodedResult.format.formatName
+    li.textContent = "Codigo: " + decodedText + " Formato: " + decodedResult.result.format.formatName
     resultsList.append(li)
 }
 
 function onScanFailure(error) {
+    if (error == "QR code parse error, error = TypeError: Cannot read properties of undefined (reading 'formatName')") {
+        return
+    }
+    
     console.warn(`Code scan error = ${error}`);
   }
 
