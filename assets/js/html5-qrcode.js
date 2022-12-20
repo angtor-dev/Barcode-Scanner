@@ -1,6 +1,11 @@
 function onScanSuccess(decodedText, decodedResult) {
-    // handle the scanned code as you like, for example:
     console.log(`Code matched = ${decodedText}`, decodedResult);
+
+    let resultsList = document.getElementById('decodedResults')
+
+    let li = document.createElement('li')
+    li.textContent = "Codigo: " + decodedText + " Formato: " + decodedResult.format.formatName
+    resultsList.append(li)
 }
 
 let scanConfig = {
@@ -13,4 +18,4 @@ let scanConfig = {
 
 let html5QrcodeScanner = new Html5QrcodeScanner("reader", scanConfig, false);
 
-html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+html5QrcodeScanner.render(onScanSuccess);
