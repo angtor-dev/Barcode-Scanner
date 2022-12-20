@@ -3,15 +3,14 @@ function onScanSuccess(decodedText, decodedResult) {
     console.log(`Code matched = ${decodedText}`, decodedResult);
 }
 
-function onScanFailure(error) {
-    // handle scan failure, usually better to ignore and keep scanning.
-    // for example:
-    console.warn(`Code scan error = ${error}`);
+let scanConfig = {
+    fps: 10,
+    aspectRatio: 1,
+    qrbox: { width: 250, height: 250 },
+    supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
+    showTorchButtonIfSupported: true
 }
 
-let html5QrcodeScanner = new Html5QrcodeScanner(
-    "reader",
-    { fps: 10, qrbox: { width: 250, height: 250 } },
-    /* verbose= */ false);
+let html5QrcodeScanner = new Html5QrcodeScanner("reader", scanConfig, false);
 
 html5QrcodeScanner.render(onScanSuccess, onScanFailure);
