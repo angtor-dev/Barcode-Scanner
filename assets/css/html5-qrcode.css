@@ -16,15 +16,22 @@ img[alt='Info icon'] {
 }
 
 /* Custom page */
+.reader {
+    width: calc(100vw - 16px);
+    height: min(calc(100vw - 16px), 80vh);
+}
+
 #detenerEscaner {
     display: none;
 }
 
 .scan-controls {
     display: flex;
+    flex-direction: column;
     width: 100%;
     padding: 15px 0;
-    justify-content: center;
+    gap: 8px;
+    align-items: center;
 }
 
 #table-results {

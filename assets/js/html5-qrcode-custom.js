@@ -1,6 +1,7 @@
 const html5QrCode = new Html5Qrcode("reader");
 const startScanEl = document.getElementById('iniciarEscaner')
 const stopScanEl = document.getElementById('detenerEscaner')
+const flashEl = document.getElementById('flash')
 
 var lastDecodedText = ""
 
@@ -33,13 +34,22 @@ function startScanner() {
                 scanConfig,
                 onScanSuccess,
                 (errorMessage) => {})
+            .then(() => {
+                console.log("getting capabilities...")
+                let capabilities = html5QrCode.getRunningTrackCapabilities()
+                console.log(capabilities)
+
+                stopScanEl.classList.toggle('d-block')
+                startScanEl.classList.toggle('d-none')
+
+                if (capabilities.torch) {
+                    flashEl.classList.remove('d-none')
+                }
+            })
             .catch((err) => {
                 // Start failed, handle it.
                 console.log(err)
             });
-
-            stopScanEl.classList.toggle('d-block')
-            startScanEl.classList.toggle('d-none')
         }
     }).catch(err => {
         // handle err
@@ -51,4 +61,15 @@ function stopScanner() {
     
     stopScanEl.classList.toggle('d-block')
     startScanEl.classList.toggle('d-none')
+    flashEl.classList.toggle('d-none')
+}
+
+function toggleTorch() {
+    if (html5QrCode.getState() == Html5QrcodeScannerState.SCANNING || html5QrCode.getState() == Html5QrcodeScannerState.PAUSED) {
+        html5QrCode.applyVideoConstraints({
+            advanced: [{
+                torch: !html5QrCode.getRunningTrackSettings().torch
+            }]
+        })
+    }
 }

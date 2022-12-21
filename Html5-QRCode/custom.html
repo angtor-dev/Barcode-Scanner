@@ -10,11 +10,13 @@
     <title>Html5Qrcode Test</title>
 </head>
 <body>
-    <div id="reader"></div>
+    <div class="reader" id="reader"></div>
 
     <div class="scan-controls">
         <button id="iniciarEscaner" onclick="startScanner()">Iniciar Escaner</button>
         <button id="detenerEscaner" onclick="stopScanner()">Detener Escaner</button>
+
+        <button class="d-none" id="flash" onclick="toggleTorch()">Flash</button>
     </div>
 
     <table id="table-results">
