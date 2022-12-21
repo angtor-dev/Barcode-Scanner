@@ -57,6 +57,9 @@ function startScanner() {
 }
 
 function stopScanner() {
+    if (html5QrCode.getState() == Html5QrcodeScannerState.NOT_STARTED) 
+        return
+
     html5QrCode.stop()
     
     stopScanEl.classList.toggle('d-block')
