@@ -61,7 +61,7 @@ function stopScanner() {
     
     stopScanEl.classList.toggle('d-block')
     startScanEl.classList.toggle('d-none')
-    flashEl.classList.toggle('d-none')
+    flashEl.classList.add('d-none')
 }
 
 function toggleTorch() {
